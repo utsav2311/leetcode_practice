@@ -4,21 +4,18 @@ class Solution {
         // Sort intervals according to ending time
         Arrays.sort(intervals,
                 (a, b) -> Integer.compare(a[1], b[1]));
-                int count = 0;
+                int count = 1;
                 // End time of first selected interval
         int end = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {
             // No overlap
-            if (intervals[i][0] < end) {
+            if (intervals[i][0] >= end) {
                 count++;
                 // Update end to current interval's end
-                
-            }
-            else{
-                 end = intervals[i][1];
+                end = intervals[i][1];
             }
         }
         // Total - intervals we kept
-        return count;
+        return intervals.length - count;
     }
 }
